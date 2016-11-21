@@ -32,7 +32,7 @@ http.createServer(function(request, response) {
             var collection = db.collection('users');
 
             //We have a cursor now with our find criteria
-            var results = collection.find({name : 'modulus user'});
+            var results = collection.find();
             //Lets iterate on the result
             results.each(function (err, result) {
                 //if the result is null, there are no more results, it’s ok to close everything
@@ -43,6 +43,7 @@ http.createServer(function(request, response) {
                 if (err) {
                     response.write(err);
                 } else {
+
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
@@ -61,6 +62,8 @@ http.createServer(function(request, response) {
             });
 
         }
+        // asynchronous task send the function to be start and continue to read the file
+        // meet the close and close the db before the fucntion send have the time to finish.
         //Done Close connection
         //db.close();
         //response.end('Finished, Connection closed \n');
