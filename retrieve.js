@@ -36,7 +36,7 @@ http.createServer(function(request, response) {
             response.write("test2");
 
             //Lets iterate on the result
-            results.each(function (err, result) {
+            results.foreach(function (err, result) {
                 response.write("test");
                 //if the result is null, there are no more results, it’s ok to close everything
                 if (result == null) {
@@ -49,14 +49,10 @@ http.createServer(function(request, response) {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
-
-
             //Done Close connection
             db.close();
             response.end('Finished, Connection closed \n');
-
         }
-
     });
 
 }).listen(port);

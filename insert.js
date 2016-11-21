@@ -49,7 +49,6 @@ http.createServer(function(request, response) {
             });
             //Close connection
             db.close();
-
             response.end('Finished, Connection closed \n');
             //remove any other db.close or response.end statement below this line
         }
