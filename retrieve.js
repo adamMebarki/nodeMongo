@@ -34,6 +34,8 @@ http.createServer(function(request, response) {
             //We have a cursor now with our find criteria
             var results = collection.find();
             //Lets iterate on the result
+            results.sort({name : -1});
+            
             results.each(function (err, result) {
                 //if the result is null, there are no more results, it’s ok to close everything
                 if (result == null) {
