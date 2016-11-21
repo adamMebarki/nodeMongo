@@ -32,12 +32,11 @@ http.createServer(function(request, response) {
             var collection = db.collection('users');
 
             //We have a cursor now with our find criteria
-            var results = collection.find({name: 'modulus'});
+            var results = collection.find({name: 'modulus user'});
             response.write("test2");
 
             //Lets iterate on the result
             results.forEach(function (err, result) {
-                response.write("test");
                 //if the result is null, there are no more results, it’s ok to close everything
                 if (result == null) {
                     response.end('Completed');
@@ -49,7 +48,9 @@ http.createServer(function(request, response) {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
-           //
+            //Done Close connection
+            db.close();
+            response.end('Finished, Connection closed \n');
         }
     });
 
