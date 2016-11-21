@@ -37,21 +37,22 @@ http.createServer(function(request, response) {
             var user3 = {name: 'modulus super admin', age: 92, roles: ['super-admin', 'admin', 'moderator', 'user']};
 
             //Done Close connection
-            db.close();
         }
         // Insert some users
-        collection.insert([user1,user2,user3],function(err,result){
-            if(err){
-                response.write('Insert failed' + err + "\n");
-            }else {
+        // Insert some users
+        collection.insert([user1, user2, user3], function (err, result) {
+            if (err) {
+                response.write('Insert failed ' + err + "\n");
+            } else {
                 console.log(result);
-                response.write('Inserted'+result.insertedCount+'documents ok. + "\n"');
+                response.write('Inserted ' + result.insertedCount +' documents ok. +"\n"');
             }
-            // Close connection
+            //Close connection
             db.close();
             response.end('Finished, Connection closed \n');
-
+            //remove any other db.close or response.end statement below this line
         });
+
 
 
 
