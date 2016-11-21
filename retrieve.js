@@ -32,7 +32,7 @@ http.createServer(function(request, response) {
             var collection = db.collection('users');
 
             //We have a cursor now with our find criteria
-            var results = collection.find({"name": 'modulus user'});
+            var results = collection.find({name : 'modulus user'});
 
             //Lets iterate on the result
             results.forEach(function (err, result) {
@@ -46,6 +46,19 @@ http.createServer(function(request, response) {
                 } else {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
+            });
+
+            collection.update({name : 'modulus user'},{$set: {enabled : false}},function(err,numUpdated){
+                if (err) {
+                    response.write(err);
+                } else if (numUpdated) {
+                    response.write ('Updated Successfully : ' + numUpdated + "\n");
+                } else {
+                    response.write ('No document found with defined "find" criteria!');
+                }
+                db.close;
+                response.end('DB closed');
+
             });
 
         }
