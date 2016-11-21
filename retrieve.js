@@ -26,12 +26,13 @@ http.createServer(function(request, response) {
             db.close();
         } else {
             //HURRAY!! We are connected. :)
-            response.write('Connection established to' + url +"\n");
+            response.write('Connection established to ' + url +"\n");
 
             // Get the documents collection
             var collection = db.collection('users');
-            // We have a cursor now with our find criteria
-            var results = collection.find({name : 'modulus user'});
+
+            //We have a cursor now with our find criteria
+            var results = collection.find({name: 'modulus user'});
 
             //Lets iterate on the result
             results.each(function (err, result) {
