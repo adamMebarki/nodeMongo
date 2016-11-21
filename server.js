@@ -5,7 +5,7 @@
 var http = require('http')
 var port = process.env.PORT || 1337;
 
-var server = http.createServer(function(request, response) {
+/*var server = http.createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write("<!DOCTYPE 'html'>");
     response.write("<html>");
@@ -22,6 +22,32 @@ var server = http.createServer(function(request, response) {
     response.write("</html>");
     response.end();
 });
-server.listen(port);
+server.listen(port); */
+
+http.createServer(function(request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
+    response.write('Connecting \n');
+    // Use connect method to connect to the Server
+    MongoClient.connect(url, function (err, db) {
+        response.write('Connection Made \n');
+        if (err) {
+            response.write('Unable to connect to the mongoDB server. Error:' + err + "\n");
+            //Error so close connection
+            db.close();
+        } else {
+            //HURRAY!! We are connected. :)
+            response.write('Connection established to' + url +"\n");
+
+            // do some work here with the database.
+
+            //Done Close connection
+            db.close();
+        }
+        response.end('Finished, Connection closed \n');
+    });
+
+}).listen(port);
+
+
 console.log("Server is listening");
 
