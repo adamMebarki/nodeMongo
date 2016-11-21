@@ -36,7 +36,7 @@ http.createServer(function(request, response) {
             response.write("test2");
 
             //Lets iterate on the result
-            results.foreach(function (err, result) {
+            results.forEach(function (err, result) {
                 response.write("test");
                 //if the result is null, there are no more results, it’s ok to close everything
                 if (result == null) {
