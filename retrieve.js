@@ -32,9 +32,9 @@ http.createServer(function(request, response) {
             var collection = db.collection('users');
 
             //We have a cursor now with our find criteria
-            var results = collection.find({"name" : "modulus user"});
+            var results = collection.find({name : 'modulus user'});
             //Lets iterate on the result
-            results.forEach(function (err, result) {
+            results.each(function (err, result) {
                 //if the result is null, there are no more results, it’s ok to close everything
                 if (result == null) {
                     response.end('Completed');
