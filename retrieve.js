@@ -33,7 +33,7 @@ http.createServer(function(request, response) {
 
             //We have a cursor now with our find criteria
             var results = collection.find({name: 'modulus user'});
-            response.write("test");
+            response.write("test2");
 
             //Lets iterate on the result
             results.each(function (err, result) {
