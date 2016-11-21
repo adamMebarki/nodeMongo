@@ -33,20 +33,21 @@ http.createServer(function(request, response) {
             // We have a cursor now with our find criteria
             var results = collection.find({name : 'modulus user'});
 
-            results.each(function (err, result){
-                // if the result is null, there are no more results, it's ok to close everything
-                if(result == null){
+            //Lets iterate on the result
+            results.each(function (err, result) {
+                //if the result is null, there are no more results, it’s ok to close everything
+                if (result == null) {
                     response.end('Completed');
                     db.close();
                 }
-                if(err) {
+                if (err) {
                     response.write(err);
-                }else{
-                    response.write('Fetched : ' + result.name + " : " + results.age +
-                    " : " + result.roles.toString() + '\n');
+                } else {
+                    response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
-            
+
+
             //Done Close connection
             db.close();
         }
