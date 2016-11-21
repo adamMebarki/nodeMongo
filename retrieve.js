@@ -33,7 +33,6 @@ http.createServer(function(request, response) {
 
             //We have a cursor now with our find criteria
             var results = collection.find({name: 'modulus user'});
-            response.write("test2");
 
             //Lets iterate on the result
             results.forEach(function (err, result) {
@@ -48,10 +47,11 @@ http.createServer(function(request, response) {
                     response.write('Fetched: ' + result.name + " : " + result.age + " : " + result.roles.toString() +'\n');
                 }
             });
-            //Done Close connection
-            db.close();
-            response.end('Finished, Connection closed \n');
+
         }
+        //Done Close connection
+        db.close();
+        response.end('Finished, Connection closed \n');
     });
 
 }).listen(port);
