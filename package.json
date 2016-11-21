@@ -1,7 +1,7 @@
 {
-  "name" : "nodeApp",
-  "version" : "1.0.0",
-  "dependencies" : {
-    "mongodb" : "*"
+  "name": "nodeApp",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongodb": "*"
   }
 }

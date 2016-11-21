@@ -3,7 +3,7 @@
  */
 
 // lets require/import the mongodb native drivers.
-var mongodb = require('mongondb');
+var mongodb = require('mongodb');
 // and our HHTP server
 var http = require('http');
 // setup our port
