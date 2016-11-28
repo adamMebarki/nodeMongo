@@ -15,10 +15,12 @@ var client = new Twitter({
 });
 
 http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-
+    response.writeHead(200, { 'Content-Type': 'application/json','Access-Control-Allow-Origin' : '*'});
     client.get('search/tweets', {q: 'lolcats'}, function(error, tweets){
-        console.log(tweets);
+        var json = [];
+        for (var i =0; i< tweets.statuses.length ; i++) {
+            json.push({name: tweets.statuses[i].user.name, text: tweets.statuses[i].text});
+        }
+        response.end(JSON.stringify(tweets));
     });
-
 }).listen(port);
