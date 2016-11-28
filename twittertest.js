@@ -8,10 +8,16 @@ var port = process.env.PORT || 1337;
 
 
 var client = new Twitter({
-    consumer_key:'qvED2z2cuLV5cKOyqSs4yZBix',
+   /* consumer_key:'qvED2z2cuLV5cKOyqSs4yZBix',
     consumer_secret:'TDFzGHcevtD8Vx2q459eiV6LlunyMtBS0OgaKGXKH15tTHDlrH',
     access_token_key:' 803245930115899393-BSW3RbcjWKVSwN2IQPROrTn3YC3Nt8e',
     access_token_secret:'PNhqEJB7tza4juPuUzdZy6Pkx4VgJOUxulGZCjGUdtyaz'
+    */
+    consumer_key: 'uXl8060AfB6TtVZOjUPbPqiuU',
+    consumer_secret: 'qWYtc0c6wskWp9OvP63LcFTxnGexfhCjLAfN7gKgcwW7zfcSdv',
+    access_token_key: '14812487-6rIZpOfDmMBGFybfd26Cpe86kGw64MLGaZLaimuFN',
+    access_token_secret: 'efrJVLugBwFeAVnWSx1Cx6Z8N8IJlSB3js7XjW4KUYiuc'
+
 });
 
 http.createServer(function(request, response) {
